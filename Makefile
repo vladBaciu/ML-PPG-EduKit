@@ -48,7 +48,7 @@ TARGET=APP_CY8CPROTO-063-BLE
 #
 # If APPNAME is edited, ensure to update or regenerate launch
 # configurations for your IDE.
-APPNAME=mtb-example-hal-hello-world
+APPNAME=mtb-ppg-edu-kit-ei
 
 # Name of toolchain to use. Options include:
 #
