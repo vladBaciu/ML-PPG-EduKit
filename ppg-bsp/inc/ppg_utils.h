@@ -13,6 +13,9 @@
  * UNPUBLISHED, LICENSED SOFTWARE.
  *
  *  ==============================================================================================*/
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 #ifndef UTILS_H
 #define UTILS_H
@@ -75,4 +78,6 @@ void HandleError(void);
 
 #endif /* UTILS_H */
 
-
+#ifdef __cplusplus
+}
+#endif

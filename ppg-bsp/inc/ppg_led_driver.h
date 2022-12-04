@@ -14,6 +14,10 @@
  *
  *  ==============================================================================================*/
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #ifndef TLC5925_H_
 #define TLC5925_H_
     
@@ -62,4 +66,7 @@ void TLC5925_disableAll(void);
 void TLC5925_SetCurrent_mA(uint16_t val);
 
 #endif /* TLC5925_H_ */    
-/* [] END OF FILE */
+
+#ifdef __cplusplus
+}
+#endif

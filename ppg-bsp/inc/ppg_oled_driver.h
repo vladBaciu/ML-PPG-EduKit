@@ -39,6 +39,10 @@ POSSIBILITY OF SUCH DAMAGE.
  *
  *  ==============================================================================================*/
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #ifndef _OLED_DRIVER_H
 #define _OLED_DRIVER_H
 
@@ -110,5 +114,9 @@ void gfx_drawCircle( int16_t x0, int16_t y0, int16_t r,uint16_t color );
 void gfx_drawTriangle( int16_t x0, int16_t y0,int16_t x1, int16_t y1, int16_t x2, int16_t y2, uint16_t color );
 void gfx_setRotation( uint8_t x );
 void gfx_drawBitmap(int16_t x, int16_t y, const uint8_t bitmap[], int16_t w, int16_t h, uint16_t color); 
+
 #endif	/* _OLED_DRIVER_H */
-/* [] END OF FILE */
+
+#ifdef __cplusplus
+}
+#endif

@@ -1,3 +1,8 @@
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+
 #ifndef FONT5X7_H
 #define FONT5X7_H
 
@@ -261,4 +266,6 @@ static const unsigned char font[] = {
 };
 #endif // FONT5X7_H
 
-/* [] END OF FILE */
+#ifdef __cplusplus
+}
+#endif

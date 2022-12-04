@@ -14,6 +14,10 @@
  *
  *  ==============================================================================================*/
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #ifndef MILLISECONDS_H
 #define MILLISECONDS_H
 
@@ -62,4 +66,7 @@ uint32_t MILLIS_GetValue(void);
 
 
 #endif /* MILLISECONDS_H */
-/* [] END OF FILE */
+
+#ifdef __cplusplus
+}
+#endif

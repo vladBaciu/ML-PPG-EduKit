@@ -14,6 +14,10 @@
  *
  *  ==============================================================================================*/
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #ifndef AD5273_H_
 #define AD5273_H_
 
@@ -65,4 +69,8 @@ uint8_t AD5273_WriteData(uint8_t val);
 
 
 #endif /* AD5273_H_ */
-/* [] END OF FILE */
+
+#ifdef __cplusplus
+}
+#endif
+
