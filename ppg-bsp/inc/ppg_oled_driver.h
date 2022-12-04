@@ -1,5 +1,5 @@
 /**
- *   @file    oled_driver.h
+ *   @file    ppg_oled_driver.h
  *   @author  Vlad-Eusebiu Baciu
  *   @brief   SH1107 Oled driver library
  *   @details Export SH1107 Oled driver library APIs and macros
@@ -31,6 +31,14 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 POSSIBILITY OF SUCH DAMAGE.
 */
 
+/*==================================================================================================
+ *
+ * Copyright Vrije Universiteit Brussel, 2021-2022
+ * All Rights Reserved
+ * UNPUBLISHED, LICENSED SOFTWARE.
+ *
+ *  ==============================================================================================*/
+
 #ifndef _OLED_DRIVER_H
 #define _OLED_DRIVER_H
 
@@ -38,7 +46,7 @@ POSSIBILITY OF SUCH DAMAGE.
  *                                        INCLUDE FILES
  *  ==============================================================================================*/
 
-#include "utils.h"
+#include "ppg_utils.h"
 
 /*==================================================================================================
  *                                          CONSTANTS

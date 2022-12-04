@@ -49,7 +49,7 @@
 
 #define ADC_CLOCK_INTERNAL               ((1) == 1u)
 #if (ADC_CLOCK_INTERNAL)
-#include "ADC_intSarClock.h"
+#include "ppg_creator_adc_init.h"
 #endif /* ADC_CLOCK_INTERNAL */
 
 

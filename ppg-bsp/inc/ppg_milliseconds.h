@@ -1,5 +1,5 @@
 /**
- *   @file    milliseconds.h
+ *   @file    ppg_milliseconds.h
  *   @author  Vlad-Eusebiu Baciu
  *   @brief   Export mills APIs and time variable
  *   @details -
@@ -8,7 +8,7 @@
 
 /*==================================================================================================
  *
- * Copyright Vrije Universiteit Brussel, 2021
+ * Copyright Vrije Universiteit Brussel, 2021-2022
  * All Rights Reserved
  * UNPUBLISHED, LICENSED SOFTWARE.
  *
@@ -21,7 +21,7 @@
  *                                        INCLUDE FILES
  *  ==============================================================================================*/
 
-#include "utils.h"
+#include "ppg_utils.h"
 
 /*==================================================================================================
  *                                          CONSTANTS

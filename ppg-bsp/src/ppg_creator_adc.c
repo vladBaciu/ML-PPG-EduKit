@@ -36,7 +36,7 @@
 * of such system or application assumes all risk of such use and in doing
 * so agrees to indemnify Cypress against all liability.
 *******************************************************************************/
-#include "ADC.h"
+#include "ppg_creator_adc.h"
 #include "cy_sysint.h"
 
 

@@ -6,7 +6,7 @@
 #include "cybsp.h"
 #include "cy_retarget_io.h"
 
-#include "ppg_adc.h"
+#include "ppg_mtb_adc.h"
 
 #define EI_PORTING_INFINEONPSOC62 1
 // Callback function declaration

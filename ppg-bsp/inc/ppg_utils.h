@@ -1,5 +1,5 @@
 /**
- *   @file    utils.h
+ *   @file    ppg_utils.h
  *   @author  Vlad-Eusebiu Baciu
  *   @brief   Export utils definitions and functions.
  *   @details Export common APIs, macros used in custom libs.
@@ -8,7 +8,7 @@
 
 /*==================================================================================================
  *
- * Copyright Vrije Universiteit Brussel, 2021
+ * Copyright Vrije Universiteit Brussel, 2021-2022
  * All Rights Reserved
  * UNPUBLISHED, LICENSED SOFTWARE.
  *

@@ -133,7 +133,7 @@ SOURCES += $(wildcard edge-impulse-sdk/CMSIS/DSP/Source/MatrixFunctions/*.c)
 
 
 # Include PPG EduKit platform specific source files
-SOURCES += $(wildcard ../src/*.c)
+SOURCES += $(wildcard ../ppg-bsp/src/*.c)
 
 # Like SOURCES, but for include directories. Value should be paths to
 # directories (without a leading -I).
@@ -143,7 +143,7 @@ INCLUDES += edge-impulse-sdk/CMSIS/NN/Include/
 INCLUDES += edge-impulse-sdk/CMSIS/DSP/PrivateInclude/
 
 # Include PPG EduKit platform specific header files
-INCLUDES += ./inc
+INCLUDES += ./ppg-bsp/inc
 
 # Ignore edge impulse SDK during auto-discovery since it is included in SOURCES
 CY_IGNORE=edge-impulse-sdk

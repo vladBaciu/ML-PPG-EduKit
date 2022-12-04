@@ -1,5 +1,5 @@
 /**
- *   @file    utils.c
+ *   @file    ppg_utils.c
  *   @author  Vlad-Eusebiu Baciu
  *   @brief   Utils library
  *   @details Includes common functions, macros for all the
@@ -9,7 +9,7 @@
 
 /*==================================================================================================
  *
- * Copyright Vrije Universiteit Brussel, 2021
+ * Copyright Vrije Universiteit Brussel, 2021-2022
  * All Rights Reserved
  * UNPUBLISHED, LICENSED SOFTWARE.
  *
@@ -22,13 +22,13 @@
  * 2) needed interfaces from external units
  * 3) internal and external interfaces from this unit
  *  ==============================================================================================*/
-#include "utils.h"
+#include "ppg_utils.h"
 
 #include <cmsis_gcc.h>
 #include <stdint.h>
 #include "cyhal.h"
 
-#include "oled_driver.h"
+#include "ppg_oled_driver.h"
 /*==================================================================================================
  *                          LOCAL TYPEDEFS (STRUCTURES, UNIONS, ENUMS)
  *  ==============================================================================================*/

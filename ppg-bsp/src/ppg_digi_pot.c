@@ -1,5 +1,5 @@
 /**
- *   @file    AD5273BRJZ1.c
+ *   @file    ppg_digi_pot.c
  *   @author  Vlad-Eusebiu Baciu
  *   @brief   Library for the AD5273BRJZ1 digital pot.
  *   @details Initialize the digital pot, set resistance, read status. 
@@ -8,7 +8,7 @@
 
 /*==================================================================================================
  *
- * Copyright Vrije Universiteit Brussel, 2021
+ * Copyright Vrije Universiteit Brussel, 2021-2022
  * All Rights Reserved
  * UNPUBLISHED, LICENSED SOFTWARE.
  *
@@ -24,10 +24,10 @@
 
 /* @brief Include PSOC generated files */
 #include "cy_gpio.h"
-#include "I2C_Bus.h"
+#include "ppg_i2c_bus.h"
 
 /* @brief Include custom libraries for PPG EduKit */
-#include "AD5273.h"
+#include "ppg_digi_pot.h"
 
 /*==================================================================================================
  *                          LOCAL TYPEDEFS (STRUCTURES, UNIONS, ENUMS)

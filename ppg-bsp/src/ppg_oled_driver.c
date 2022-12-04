@@ -1,5 +1,5 @@
 /**
- *   @file    oled_driver.c
+ *   @file    ppg_oled_driver.c
  *   @author  Vlad-Eusebiu Baciu
  *   @brief   SH1107 Oled driver library
  *   @details Includes I2C communication and Adafruit gfx library
@@ -32,6 +32,14 @@ POSSIBILITY OF SUCH DAMAGE.
 */
 
 /*==================================================================================================
+ *
+ * Copyright Vrije Universiteit Brussel, 2021-2022
+ * All Rights Reserved
+ * UNPUBLISHED, LICENSED SOFTWARE.
+ *
+ *  ==============================================================================================*/
+
+/*==================================================================================================
  *                                        INCLUDE FILES
  * 1) system and project includes
  * 2) needed interfaces from external units
@@ -40,9 +48,10 @@ POSSIBILITY OF SUCH DAMAGE.
 
 
 /* @brief Include custom libraries for PPG EduKit */
-#include "oled_driver.h"
-#include "font.h"
-#include "I2C_BUS.h"
+#include "ppg_oled_driver.h"
+#include "ppg_i2c_bus.h"
+#include "ppg_font.h"
+
 /*==================================================================================================
  *                          LOCAL TYPEDEFS (STRUCTURES, UNIONS, ENUMS)
  *  ==============================================================================================*/

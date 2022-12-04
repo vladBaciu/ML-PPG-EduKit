@@ -1,5 +1,5 @@
 /**
- *   @file    TLC5925.c
+ *   @file    ppg_led_driver.c
  *   @author  Vlad-Eusebiu Baciu
  *   @brief   TLC5925 LED driver library
  *   @details Set active LED, set LED current.
@@ -8,7 +8,7 @@
 
 /*==================================================================================================
  *
- * Copyright Vrije Universiteit Brussel, 2021
+ * Copyright Vrije Universiteit Brussel, 2021-2022
  * All Rights Reserved
  * UNPUBLISHED, LICENSED SOFTWARE.
  *
@@ -26,8 +26,8 @@
 #include "cycfg_pins.h"
 
 /* @brief Include custom libraries for PPG EduKit */
-#include "TLC5925.h"
-#include "AD5273.h"
+#include "ppg_led_driver.h"
+#include "ppg_digi_pot.h"
 
 
 /*==================================================================================================

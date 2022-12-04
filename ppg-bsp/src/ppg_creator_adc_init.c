@@ -36,7 +36,7 @@
 * of such system or application assumes all risk of such use and in doing
 * so agrees to indemnify Cypress against all liability.
 *******************************************************************************/
-#include "ADC.h"
+#include "ppg_creator_adc.h"
 
 /* Array of configuration structures for the ScanADC PDL */
 static const cy_stc_sar_config_t ADC_hwConfigs[ADC_TOTAL_CONFIGS] = {

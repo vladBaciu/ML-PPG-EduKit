@@ -1,5 +1,5 @@
 /**
- *   @file    milliseconds.c
+ *   @file    ppg_milliseconds.c
  *   @author  Vlad-Eusebiu Baciu
  *   @brief   MILLS library
  *   @details Library used for time measurement
@@ -8,7 +8,7 @@
 
 /*==================================================================================================
  *
- * Copyright Vrije Universiteit Brussel, 2021
+ * Copyright Vrije Universiteit Brussel, 2021-2022
  * All Rights Reserved
  * UNPUBLISHED, LICENSED SOFTWARE.
  *
@@ -24,7 +24,7 @@
 #include "cycfg_peripherals.h"
 
 /* @brief Include custom libraries for PPG EduKit */
-#include "milliseconds.h"
+#include "ppg_milliseconds.h"
 
 /*==================================================================================================
  *                          LOCAL TYPEDEFS (STRUCTURES, UNIONS, ENUMS)

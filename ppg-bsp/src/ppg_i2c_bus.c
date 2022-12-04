@@ -12,7 +12,7 @@
 * the software package with which this file was provided.
 *******************************************************************************/
 
-#include "I2C_BUS.h"
+#include "ppg_i2c_bus.h"
 
 
 #if defined(__cplusplus)

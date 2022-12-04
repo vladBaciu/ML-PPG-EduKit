@@ -1,32 +1,28 @@
 /**
- *   @file    AD5273BRJZ1.h
+ *   @file    ppg_led_driver.h
  *   @author  Vlad-Eusebiu Baciu
- *   @brief   Library for the AD5273BRJZ1 digital pot.
- *   @details Initialize the digital pot, set resistance, read status. 
+ *   @brief   TLC5925 LED driver library
+ *   @details Export TLC5925 LED driver APIs
  *            
  */
 
 /*==================================================================================================
  *
- * Copyright Vrije Universiteit Brussel, 2021
+ * Copyright Vrije Universiteit Brussel, 2021-2022
  * All Rights Reserved
  * UNPUBLISHED, LICENSED SOFTWARE.
  *
  *  ==============================================================================================*/
 
-#ifndef AD5273_H_
-#define AD5273_H_
-
+#ifndef TLC5925_H_
+#define TLC5925_H_
+    
 /*==================================================================================================
  *                                        INCLUDE FILES
- * 1) system and project includes
- * 2) needed interfaces from external units
- * 3) internal and external interfaces from this unit
  *  ==============================================================================================*/
 
-#include "utils.h"
+#include "ppg_utils.h"
 
-    
 /*==================================================================================================
  *                                          CONSTANTS
  *  ==============================================================================================*/
@@ -58,11 +54,12 @@
  *                                    FUNCTION PROTOTYPES
  *  ==============================================================================================*/    
     
-void AD5273_Init(void);
-void AD5273_SetWiper(uint32_t resVal);
-uint8_t AD5273_ReadData(void);
-uint8_t AD5273_WriteData(uint8_t val);
+void TLC5925_ShiftOut(uint16_t ulBitOrder, uint16_t ulVal);   
+void TLC5925_enableRed(void);
+void TLC5925_enableGreen(void);
+void TLC5925_enableIR(void);
+void TLC5925_disableAll(void);
+void TLC5925_SetCurrent_mA(uint16_t val);
 
-
-#endif /* AD5273_H_ */
+#endif /* TLC5925_H_ */    
 /* [] END OF FILE */
