@@ -1,15 +1,29 @@
+/**
+ *   @file    ppg_config.h
+ *   @author  Vlad-Eusebiu Baciu
+ *   @brief   Export config definitions and functions.
+ *   @details config detils based on the app type
+ *
+ */
+
+/*==================================================================================================
+ *
+ * Copyright Vrije Universiteit Brussel, 2021-2022
+ * All Rights Reserved
+ * UNPUBLISHED, LICENSED SOFTWARE.
+ *
+ *  ==============================================================================================*/
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-#ifndef INC_PPG_ADC_H_
-#define INC_PPG_ADC_H_
+#ifndef CONFIG_H
+#define CONFIG_H
 
 /*==================================================================================================
  *                                        INCLUDE FILES
  *  ==============================================================================================*/
-
-#include "ppg_utils.h"
+ #include "ppg_utils.h"
 
 /*==================================================================================================
  *                                          CONSTANTS
@@ -19,7 +33,19 @@ extern "C" {
 /*==================================================================================================
  *                                      DEFINES AND MACROS
  *  ==============================================================================================*/
-#define PPG_ADC_SAR_CHANNEL     (0U)  
+
+/* @brief Just a redefinition */
+#define APP_EI_INFERENCE_HARDCODED_DATA      (0U)
+#define APP_EI_INFERENCE_ACQUIRED_DATA       (1U)
+
+
+
+
+#define APP_EI_STREAM_DATA                   (2U)
+
+#define STREAM_DATA_FREQUENCY                (25U) // 25 Hz by default
+#define STREAM_MAX_PPG_SENSOR_DATA           (false)
+#define STREAM_TEMP_SENSOR_DATA              (false)
 
 /*==================================================================================================
  *                                             ENUMS
@@ -42,10 +68,8 @@ extern "C" {
  *                                    FUNCTION PROTOTYPES
  *  ==============================================================================================*/
 
-void PpgAdcInit(void);
-uint32_t PpgGetResult(uint8_t channel);
 
-#endif /* INC_PPG_ADC_H_ */
+#endif /* CONFIG_H */
 
 #ifdef __cplusplus
 }

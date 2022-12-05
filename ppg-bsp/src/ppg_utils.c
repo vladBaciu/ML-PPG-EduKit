@@ -29,6 +29,12 @@
 #include "cyhal.h"
 
 #include "ppg_oled_driver.h"
+#include "ppg_mtb_adc.h"
+#include "ppg_led_driver.h"
+#include "ppg_max30102.h"
+#include "ppg_config.h"
+#include "ppg_milliseconds.h"
+
 /*==================================================================================================
  *                          LOCAL TYPEDEFS (STRUCTURES, UNIONS, ENUMS)
  *  ==============================================================================================*/
@@ -38,7 +44,11 @@
  *                                       LOCAL MACROS
  *  ==============================================================================================*/
 
+#if (MAIN_APP == APP_EI_STREAM_DATA)
 
+#define PPG_INTERVAL_MS      (1000 / ((STREAM_DATA_FREQUENCY * 3U) + 1))
+
+#endif
 /*==================================================================================================
  *                                      LOCAL CONSTANTS
  *  ==============================================================================================*/
@@ -70,13 +80,76 @@
 /*==================================================================================================
  *                                       LOCAL FUNCTIONS
  *  ==============================================================================================*/
+#if (MAIN_APP == APP_EI_STREAM_DATA)
+static PPG_ReadChannel(uint8_t index, uint32_t *buf)
+{
+    switch(index)
+    {
+        case RED_CHANNEL:
+        TLC5925_enableRed();
+        break;
+        case GREEN_CHANNEL:
+        TLC5925_enableGreen();
+        break;
+        case IR_CHANNEL:
+        TLC5925_enableIR();
+        break;
+    }
+    CyDelayUs(200);
+    *buf = PpgGetResult(PPG_ADC_SAR_CHANNEL);
+    CyDelayUs(200);
+    
+}
 
+static PPG_ReadChannels(uint32_t *buf)
+{
+    PPG_ReadChannel(GREEN_CHANNEL, buf++);
+    CyDelayUs(20);
+    PPG_ReadChannel(RED_CHANNEL, buf++);
+    CyDelayUs(20);
+    PPG_ReadChannel(IR_CHANNEL, buf);
+    CyDelayUs(20);
+}
+
+#endif
 
 /*==================================================================================================
  *                                       GLOBAL FUNCTIONS
  *  ==============================================================================================*/
 
+#if (MAIN_APP == APP_EI_STREAM_DATA)
+void PPG_AppStreamingData(void)
+{
+    uint32_t channelBuffer[3U] = {0UL};
+    uint32_t lastMsValue = 0UL;
+    uint8_t channelIndex = 0U;
 
+    MILLIS_AssignISR();
+
+    PpgAdcInit();
+
+    TLC5925_SetCurrent_mA(5);
+    /* Enable red LED */
+    TLC5925_enableRed();
+
+    MILLIS_InitAndStartTimer();
+
+    for(;;)
+    {
+        if(MILLIS_GetValue() > lastMsValue + PPG_INTERVAL_MS)
+        {
+            lastMsValue = MILLIS_GetValue();
+            PPG_ReadChannel(channelIndex, &channelBuffer[channelIndex]);
+            channelIndex++;
+        }
+        if(3U == channelIndex)
+        {
+            printf("%d,%d,%d\n", channelBuffer[0U], channelBuffer[1U], channelBuffer[2U]);
+            channelIndex=0U;
+        }
+    }
+}
+#endif
 
 /***************************************************************************
  * Function: displayStringArray

@@ -72,6 +72,7 @@ extern "C" {
  *                                    FUNCTION PROTOTYPES
  *  ==============================================================================================*/
 
+void PPG_AppStreamingData(void);
 void displayStringArray(uint8_t *pStringBuffer, uint16_t buffLen, uint8_t textSize, uint32_t coords);
 void HandleError(void);
 

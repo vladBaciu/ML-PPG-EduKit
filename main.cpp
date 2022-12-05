@@ -6,6 +6,7 @@
 #include "cybsp.h"
 #include "cy_retarget_io.h"
 
+#include "ppg_config.h"
 #include "ppg_mtb_adc.h"
 
 #define EI_PORTING_INFINEONPSOC62 1
@@ -45,11 +46,9 @@ int main(int argc, char **argv) {
         CY_ASSERT(0);
     }
 
-    PpgAdcInit();
-
-
-    PpgGetResult(0);
-
+#if (MAIN_APP == APP_EI_STREAM_DATA)
+    PPG_AppStreamingData();
+#endif
 
     // Calculate the length of the buffer
     size_t buf_len = sizeof(features) / sizeof(features[0]);

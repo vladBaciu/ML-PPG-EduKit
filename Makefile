@@ -92,6 +92,13 @@ COMPONENTS=
 # Like COMPONENTS, but disable optional code that was enabled by default.
 DISABLE_COMPONENTS=
 
+
+#APP_EI_INFERENCE_HARDCODED_DATA=0
+#APP_EI_INFERENCE_ACQUIRED_DATA=1
+#APP_EI_STREAM_DATA=2
+
+MAIN_APP_TYPE=2
+
 ################################################################################
 # Edge Impulse Specific and PPG EduKit Platform files
 ################################################################################
@@ -154,6 +161,8 @@ CY_IGNORE=edge-impulse-sdk
 
 # Add additional defines to the build process (without a leading -D).
 DEFINES=
+
+DEFINES += MAIN_APP=$(MAIN_APP_TYPE)
 #DEFINES += __STACK_SIZE=0x20000
 DEFINES += TF_LITE_DISABLE_X86_NEON=1
 #DEFINES += EIDSP_SIGNAL_C_FN_POINTER=1
@@ -207,6 +216,7 @@ PREBUILD=
 # Custom post-build commands to run.
 POSTBUILD=
 
+$(info PPG Application: $(MAIN_APP_TYPE))
 
 ################################################################################
 # Paths
