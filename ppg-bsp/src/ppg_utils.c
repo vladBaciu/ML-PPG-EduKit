@@ -44,10 +44,9 @@
  *                                       LOCAL MACROS
  *  ==============================================================================================*/
 
-#if (MAIN_APP == APP_EI_STREAM_DATA)
-
-#define PPG_INTERVAL_MS      (1000 / ((STREAM_DATA_FREQUENCY * 3U) + 1))
-
+#if (MAIN_APP == PPG_APP_EI_STREAM_DATA)
+#define PPG_INTERVAL_MS      (1000U / ((PPG_STREAM_DATA_FREQUENCY * 3U) + 1))
+#define PPG_ACTIVE_TIME      ((PPG_LED_DUTY_CYCLE * PPG_INTERVAL_MS)/100U)
 #endif
 /*==================================================================================================
  *                                      LOCAL CONSTANTS
@@ -64,7 +63,6 @@
  *                                      GLOBAL CONSTANTS
  *  ==============================================================================================*/
 
-
 /*==================================================================================================
  *                                      GLOBAL VARIABLES
  *  ==============================================================================================*/
@@ -80,7 +78,7 @@
 /*==================================================================================================
  *                                       LOCAL FUNCTIONS
  *  ==============================================================================================*/
-#if (MAIN_APP == APP_EI_STREAM_DATA)
+#if (MAIN_APP == PPG_APP_EI_STREAM_DATA)
 static PPG_ReadChannel(uint8_t index, uint32_t *buf)
 {
     switch(index)
@@ -95,20 +93,18 @@ static PPG_ReadChannel(uint8_t index, uint32_t *buf)
         TLC5925_enableIR();
         break;
     }
-    CyDelayUs(200);
+    CyDelay(PPG_ACTIVE_TIME);
     *buf = PpgGetResult(PPG_ADC_SAR_CHANNEL);
-    CyDelayUs(200);
+    CyDelay(PPG_ACTIVE_TIME);
+    TLC5925_disableAll();
     
 }
 
 static PPG_ReadChannels(uint32_t *buf)
 {
     PPG_ReadChannel(GREEN_CHANNEL, buf++);
-    CyDelayUs(20);
     PPG_ReadChannel(RED_CHANNEL, buf++);
-    CyDelayUs(20);
     PPG_ReadChannel(IR_CHANNEL, buf);
-    CyDelayUs(20);
 }
 
 #endif
@@ -117,7 +113,7 @@ static PPG_ReadChannels(uint32_t *buf)
  *                                       GLOBAL FUNCTIONS
  *  ==============================================================================================*/
 
-#if (MAIN_APP == APP_EI_STREAM_DATA)
+#if (MAIN_APP == PPG_APP_EI_STREAM_DATA)
 void PPG_AppStreamingData(void)
 {
     uint32_t channelBuffer[3U] = {0UL};
@@ -126,9 +122,11 @@ void PPG_AppStreamingData(void)
 
     MILLIS_AssignISR();
 
+    AD5273_Init();
+    
     PpgAdcInit();
 
-    TLC5925_SetCurrent_mA(5);
+    TLC5925_SetCurrent_mA(PPG_LED_CURRENT_MA);
     /* Enable red LED */
     TLC5925_enableRed();
 
@@ -144,7 +142,7 @@ void PPG_AppStreamingData(void)
         }
         if(3U == channelIndex)
         {
-            printf("%d,%d,%d\n", channelBuffer[0U], channelBuffer[1U], channelBuffer[2U]);
+            printf("%lu,%lu,%lu\n", channelBuffer[0U], channelBuffer[1U], channelBuffer[2U]);
             channelIndex=0U;
         }
     }

@@ -46,7 +46,7 @@ int main(int argc, char **argv) {
         CY_ASSERT(0);
     }
 
-#if (MAIN_APP == APP_EI_STREAM_DATA)
+#if (MAIN_APP == PPG_APP_EI_STREAM_DATA)
     PPG_AppStreamingData();
 #endif
 

@@ -34,18 +34,20 @@ extern "C" {
  *                                      DEFINES AND MACROS
  *  ==============================================================================================*/
 
-/* @brief Just a redefinition */
-#define APP_EI_INFERENCE_HARDCODED_DATA      (0U)
-#define APP_EI_INFERENCE_ACQUIRED_DATA       (1U)
+#define PPG_LED_DUTY_CYCLE                       (50U)
+#define PPG_LED_CURRENT_MA                       (5U)
+
+
+#define PPG_APP_EI_INFERENCE_HARDCODED_DATA      (0U)
+#define PPG_APP_EI_INFERENCE_ACQUIRED_DATA       (1U)
 
 
 
+#define PPG_APP_EI_STREAM_DATA                   (2U)
 
-#define APP_EI_STREAM_DATA                   (2U)
-
-#define STREAM_DATA_FREQUENCY                (25U) // 25 Hz by default
-#define STREAM_MAX_PPG_SENSOR_DATA           (false)
-#define STREAM_TEMP_SENSOR_DATA              (false)
+#define PPG_STREAM_DATA_FREQUENCY                (25U) // 25 Hz by default
+#define PPG_STREAM_MAX_PPG_SENSOR_DATA           (false)
+#define PPG_STREAM_TEMP_SENSOR_DATA              (false)
 
 /*==================================================================================================
  *                                             ENUMS
