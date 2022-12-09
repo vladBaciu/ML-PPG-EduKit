@@ -19,7 +19,13 @@
         //mtb//
         "modustoolbox.toolsPath": "C:/Users/baciu/ModusToolbox/tools_3.0/",
         "cortex-debug.armToolchainPath": "${config:modustoolbox.toolsPath}/gcc/bin",
-        "cortex-debug.openocdPath": "${config:modustoolbox.toolsPath}/openocd/bin/openocd.exe"
+        "cortex-debug.openocdPath": "${config:modustoolbox.toolsPath}/openocd/bin/openocd.exe",
+        "files.associations": {
+            "ppg_milliseconds.h": "c",
+            "ppg_oled_driver.h": "c",
+            "ei_classifier_porting.h": "c",
+            "ei_run_classifier.h": "c"
+        }
     },
     "extensions": {
         "recommendations": [ "marus25.cortex-debug", "ms-vscode.cpptools", "dan-c-underwood.arm" ]

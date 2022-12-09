@@ -253,7 +253,7 @@ void MAX30105_Setup(uint8_t  powerLevel, uint8_t sampleAverage, uint8_t ledMode,
     initStatus = I2C_BUS_Init(&I2C_BUS_config);
     if(initStatus!=CY_SCB_I2C_SUCCESS)
     {
-        HandleError();
+        PPG_HandleError();
     }
     
     dataRate = I2C_BUS_SetDataRate(I2C_BUS_DATA_RATE_HZ, I2C_BUS_CLK_FREQ_HZ);
@@ -261,7 +261,7 @@ void MAX30105_Setup(uint8_t  powerLevel, uint8_t sampleAverage, uint8_t ledMode,
     /* check whether data rate set is not greather then required reate. */
     if(dataRate > I2C_BUS_DATA_RATE_HZ)
     {
-        HandleError();
+        PPG_HandleError();
     }
     
     Cy_SCB_I2C_Enable(I2C_MAX30105_HW);
@@ -271,7 +271,7 @@ void MAX30105_Setup(uint8_t  powerLevel, uint8_t sampleAverage, uint8_t ledMode,
     
     if(MAX_30105_EXPECTEDPARTID != rxBuffer)
     {
-        HandleError();
+        PPG_HandleError();
     }
     
     MAX30105_ReadRegister8(&rxBuffer, MAX30105_REVISIONID);

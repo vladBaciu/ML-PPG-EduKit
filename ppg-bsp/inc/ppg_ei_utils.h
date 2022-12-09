@@ -1,5 +1,5 @@
 /**
- *   @file    ppg_utils.h
+ *   @file    ppg_ei_utils.h
  *   @author  Vlad-Eusebiu Baciu
  *   @brief   Export utils definitions and functions.
  *   @details Export common APIs, macros used in custom libs.
@@ -13,25 +13,14 @@
  * UNPUBLISHED, LICENSED SOFTWARE.
  *
  *  ==============================================================================================*/
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-#ifndef UTILS_H
-#define UTILS_H
+#ifndef UTILS_EI_H
+#define UTILS_EI_H
 
 /*==================================================================================================
  *                                        INCLUDE FILES
  *  ==============================================================================================*/
 
-#include <stdint.h>
-#include <stdbool.h>
-#include <stdlib.h>
-#include <string.h>
-#include <math.h>
-#include <stdio.h>
-#include <stdarg.h>
+#include "ppg_utils.h"
 
 /*==================================================================================================
  *                                          CONSTANTS
@@ -42,18 +31,6 @@ extern "C" {
  *                                      DEFINES AND MACROS
  *  ==============================================================================================*/
 
-/* @brief Just a redefinition */
-#define TRUE                      true
-#define FALSE                     false
-
-/* @brief Data transfer status values */
-#define TRANSFER_CMPLT        (0x00UL)
-#define TRANSFER_ERROR        (0xFFUL)
-    
-/* @brief MIN and MAX functions */
-#define MIN(a,b) (((a)<(b))?(a):(b))
-#define MAX(a,b) (((a)>(b))?(a):(b))
-    
 /*==================================================================================================
  *                                             ENUMS
  *  ==============================================================================================*/
@@ -75,10 +52,7 @@ extern "C" {
  *                                    FUNCTION PROTOTYPES
  *  ==============================================================================================*/
 
-void PPG_HandleError(void);
+void PPG_UtilsAppStreamingData(void);
+void PPG_EI_UtilsAppLiveInference(void);
 
-#endif /* UTILS_H */
-
-#ifdef __cplusplus
-}
-#endif
+#endif /* UTILS_EI_H */

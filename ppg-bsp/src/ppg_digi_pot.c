@@ -115,7 +115,7 @@ void AD5273_Init(void)
     initStatus = I2C_BUS_Init(&I2C_BUS_config);
     if(initStatus!=CY_SCB_I2C_SUCCESS)
     {
-        HandleError();
+        PPG_HandleError();
     }
     
     dataRate = I2C_BUS_SetDataRate(I2C_BUS_DATA_RATE_HZ, I2C_BUS_CLK_FREQ_HZ);
@@ -123,7 +123,7 @@ void AD5273_Init(void)
     /* Check whether data rate set is not greather then required reate. */
     if(dataRate > I2C_BUS_DATA_RATE_HZ)
     {
-        HandleError();
+        PPG_HandleError();
     }
     
     Cy_SCB_I2C_Enable(I2C_AD5273_HW);
@@ -242,7 +242,7 @@ void AD5273_SetWiper(uint32_t resVal)
     result = AD5273_ReadData();
     if(((AD5273_E1_STATUS_MASK | AD5273_E0_STATUS_MASK) & result) != 0x00)
     {
-        HandleError();
+        PPG_HandleError();
     }
 }
 

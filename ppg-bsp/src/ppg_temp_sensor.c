@@ -92,7 +92,7 @@ void MAX30205_Init(void)
     initStatus = I2C_BUS_Init(&I2C_BUS_config);
     if(initStatus!=CY_SCB_I2C_SUCCESS)
     {
-        HandleError();
+        PPG_HandleError();
     }
     
     dataRate = I2C_BUS_SetDataRate(I2C_BUS_DATA_RATE_HZ, I2C_BUS_CLK_FREQ_HZ);
@@ -100,7 +100,7 @@ void MAX30205_Init(void)
     /* Check whether data rate set is not greather then required reate. */
     if(dataRate > I2C_BUS_DATA_RATE_HZ)
     {
-        HandleError();
+        PPG_HandleError();
     }
     
     Cy_SCB_I2C_Enable(I2C_BUS_HW);
@@ -111,7 +111,7 @@ void MAX30205_Init(void)
     
     if(initStatus == TRANSFER_ERROR)
     {
-        HandleError();
+        PPG_HandleError();
     }
 }
 
@@ -202,7 +202,7 @@ float MAX30205_GetTemperature(void)
     errorStatus = MAX30205_ReadBytes(&raw_bytes[0], 2, MAX30205_TEMPERATURE);
     if(errorStatus == TRANSFER_ERROR)
     {
-        HandleError();
+        PPG_HandleError();
     }
    
     raw_data = raw_bytes[0] << 8 | raw_bytes[1];  

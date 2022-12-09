@@ -97,7 +97,7 @@ DISABLE_COMPONENTS=
 #APP_EI_INFERENCE_ACQUIRED_DATA=1
 #PPG_APP_EI_STREAM_DATA=2
 
-MAIN_APP_TYPE=2
+MAIN_APP_TYPE=1
 
 ################################################################################
 # Edge Impulse Specific and PPG EduKit Platform files
@@ -141,6 +141,7 @@ SOURCES += $(wildcard edge-impulse-sdk/CMSIS/DSP/Source/MatrixFunctions/*.c)
 
 # Include PPG EduKit platform specific source files
 SOURCES += $(wildcard ../ppg-bsp/src/*.c)
+SOURCES += $(wildcard ../ppg-bsp/src/*.cpp)
 
 # Like SOURCES, but for include directories. Value should be paths to
 # directories (without a leading -I).
