@@ -67,5 +67,8 @@ int main(int argc, char **argv) {
     PPG_EI_UtilsAppLiveInference();
 #endif
 
+#if(MAIN_APP == PPG_APP_EI_INFERENCE_ACQUIRED_DATA)
+    PPG_EI_UtilsAppStaticInference();
+#endif
     return 0;
 }

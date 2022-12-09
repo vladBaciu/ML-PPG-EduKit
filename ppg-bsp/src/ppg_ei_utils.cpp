@@ -57,7 +57,7 @@
  *  ==============================================================================================*/
 
 // Raw features copied from test sample
-static const float features[] = {
+static const float raw_signal[] = {
     377, 273, 667, 380, 276, 667, 380, 275, 663, 379, 268, 663, 373, 263, 658, 370,
     261, 656, 368, 261, 657, 366, 260, 654, 369, 258, 654, 367, 257, 650, 365, 252,
     649, 361, 250, 649, 359, 250, 645, 358, 246, 644, 354, 244, 643, 360, 251, 650,
@@ -259,7 +259,7 @@ void PPG_EI_UtilsAppStaticInference(void)
     EI_IMPULSE_ERROR res;       // Return code from inference
     // Calculate the length of the buffer
 
-    size_t buf_len = sizeof(features) / sizeof(features[0]);
+    size_t buf_len = sizeof(raw_signal) / sizeof(raw_signal[0]);
 
     // Make sure that the length of the buffer matches expected input length
     if (buf_len != EI_CLASSIFIER_DSP_INPUT_FRAME_SIZE) {
@@ -267,7 +267,6 @@ void PPG_EI_UtilsAppStaticInference(void)
         ei_printf("Expected %d items, but got %d\r\n",
                 EI_CLASSIFIER_DSP_INPUT_FRAME_SIZE,
                 (int)buf_len);
-        return 1;
     }
 
     // Assign callback function to fill buffer used for preprocessing/inference

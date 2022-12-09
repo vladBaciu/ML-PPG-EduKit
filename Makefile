@@ -97,7 +97,7 @@ DISABLE_COMPONENTS=
 #APP_EI_INFERENCE_ACQUIRED_DATA=1
 #PPG_APP_EI_STREAM_DATA=2
 
-MAIN_APP_TYPE=1
+MAIN_APP_TYPE=0
 
 ################################################################################
 # Edge Impulse Specific and PPG EduKit Platform files
