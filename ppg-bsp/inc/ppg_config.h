@@ -39,15 +39,19 @@ extern "C" {
 
 
 #define PPG_APP_EI_INFERENCE_HARDCODED_DATA      (0U)
-#define PPG_APP_EI_INFERENCE_ACQUIRED_DATA       (1U)
 
+
+
+
+#define PPG_APP_EI_INFERENCE_ACQUIRED_DATA       (1U)
+#define PPG_APP_EI_STREAM_SIGNAL                 (TRUE)
 
 
 #define PPG_APP_EI_STREAM_DATA                   (2U)
 
 #define PPG_STREAM_DATA_FREQUENCY                (25U) // 25 Hz by default
-#define PPG_STREAM_MAX_PPG_SENSOR_DATA           (false)
-#define PPG_STREAM_TEMP_SENSOR_DATA              (false)
+#define PPG_STREAM_MAX_PPG_SENSOR_DATA           (FALSE)
+#define PPG_STREAM_TEMP_SENSOR_DATA              (FALSE)
 
 /*==================================================================================================
  *                                             ENUMS

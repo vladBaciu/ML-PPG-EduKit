@@ -75,6 +75,7 @@ static const float raw_signal[] = {
 };
 
 static uint32_t ppg_signal[EI_CLASSIFIER_DSP_INPUT_FRAME_SIZE] = {0U};
+static uint32_t ppg_signal_last_window[EI_CLASSIFIER_DSP_INPUT_FRAME_SIZE] = {0U};
 /*==================================================================================================
  *                                      LOCAL VARIABLES
  *  ==============================================================================================*/
@@ -84,7 +85,13 @@ static uint32_t ppg_signal[EI_CLASSIFIER_DSP_INPUT_FRAME_SIZE] = {0U};
  *                                      GLOBAL CONSTANTS
  *  ==============================================================================================*/
 #if (MAIN_APP == PPG_APP_EI_STREAM_DATA)
-const uint8_t ppgStreamingText[] = "Streaming data to Edge Impulse ...";
+const uint8_t ppgInferenceText[] = "APP: streaming data ...";
+const uint8_t ppgConnectionText[] = "Connection: serial";
+#elif(MAIN_APP == PPG_APP_EI_INFERENCE_ACQUIRED_DATA)
+const uint8_t ppgInferenceText[] = "APP: Live inference ...";
+const uint8_t ppgConnectionText[] = "Connection: serial";
+#else
+const uint8_t ppgInferenceText[] = "APP: Static data inference ...";
 const uint8_t ppgConnectionText[] = "Connection: serial";
 #endif
 /*==================================================================================================
@@ -181,7 +188,7 @@ void PPG_UtilsAppStreamingData(void)
     display_update();
     CyDelay(500UL);
 
-    PPG_UtilsDisplayStringArray(ppgStreamingText,  sizeof(ppgStreamingText)  - 1U, 1U, ((15UL << 16) | 10UL), FALSE);
+    PPG_UtilsDisplayStringArray(ppgInferenceText,  sizeof(ppgInferenceText)  - 1U, 1U, ((15UL << 16) | 10UL), TRUE);
     PPG_UtilsDisplayStringArray(ppgConnectionText, sizeof(ppgConnectionText) - 1U, 1U, ((10UL << 16) | 50UL), FALSE);
 
     for(;;)
@@ -211,10 +218,15 @@ void PPG_EI_UtilsAppLiveInference(void)
     uint32_t lastMsValue = 0UL;
     uint8_t channelIndex = 0U;
     uint32_t samples = 0UL;
+    uint32_t inferenceResult = 0UL;
+    bool firstWindow = FALSE;
 
     // Assign callback function to fill buffer used for preprocessing/inference
     signal.total_length = EI_CLASSIFIER_DSP_INPUT_FRAME_SIZE;
     signal.get_data = &get_signal_data;
+
+    PPG_UtilsDisplayStringArray(ppgInferenceText,  sizeof(ppgInferenceText)  - 1U, 1U, ((15UL << 16) | 10UL), TRUE);
+    PPG_UtilsDisplayStringArray(ppgConnectionText, sizeof(ppgConnectionText) - 1U, 1U, ((10UL << 16) | 50UL), FALSE);
 
     for(;;)
     {
@@ -224,13 +236,29 @@ void PPG_EI_UtilsAppLiveInference(void)
             {
                 lastMsValue = MILLIS_GetValue();
                 PPG_ReadChannel(channelIndex, &ppg_signal[samples++]);
-                channelIndex = ++channelIndex % 3U;
+                channelIndex++;
             }
+#if (MAIN_APP == PPG_APP_EI_INFERENCE_ACQUIRED_DATA)
+            if((3U == channelIndex) && (TRUE == firstWindow))
+            {
+                ei_printf("%lu,%lu,%lu,%lu\n", ppg_signal_last_window[samples - 3U],
+                                               ppg_signal_last_window[samples -  2U],
+                                               ppg_signal_last_window[samples - 1U],
+                                               inferenceResult);
+                channelIndex=0U;
+            }
+#endif /* (MAIN_APP == PPG_APP_EI_INFERENCE_ACQUIRED_DATA) */
         }
+
+#if (MAIN_APP == PPG_APP_EI_INFERENCE_ACQUIRED_DATA)
+        memcpy(ppg_signal_last_window, ppg_signal, sizeof(ppg_signal));
+        firstWindow = TRUE;
+#endif /* (MAIN_APP == PPG_APP_EI_INFERENCE_ACQUIRED_DATA) */
 
         // Perform DSP pre-processing and inference
         res = run_classifier(&signal, &result, false);
 
+#if (MAIN_APP == PPG_APP_EI_INFERENCE_HARDCODED_DATA)
         // Print return code and how long it took to perform inference
         ei_printf("run_classifier returned: %d\r\n", res);
         ei_printf("Timing: DSP %d ms, inference %d ms, anomaly %d ms\r\n",
@@ -243,7 +271,10 @@ void PPG_EI_UtilsAppLiveInference(void)
             ei_printf("  %s: ", ei_classifier_inferencing_categories[i]);
             ei_printf("%.5f\r\n", result.classification[i].value);
         }
-
+#else
+        inferenceResult = (result.classification[0].value > result.classification[1].value) ? 0UL : 800UL;
+#endif /* (MAIN_APP == PPG_APP_EI_INFERENCE_HARDCODED_DATA) */
+        
         channelIndex = 0U;
         samples = 0UL;
     }

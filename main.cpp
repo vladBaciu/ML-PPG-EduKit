@@ -59,16 +59,17 @@ int main(int argc, char **argv) {
     CyDelay(1000UL);
 
 
-#if (MAIN_APP == PPG_APP_EI_STREAM_DATA)
-    PPG_UtilsAppStreamingData();
-#endif
+#if(MAIN_APP == PPG_APP_EI_INFERENCE_HARDCODED_DATA)
+    PPG_EI_UtilsAppStaticInference();
+#endif /* (MAIN_APP == PPG_APP_EI_INFERENCE_HARDCODED_DATA) */
 
 #if(MAIN_APP == PPG_APP_EI_INFERENCE_ACQUIRED_DATA)
     PPG_EI_UtilsAppLiveInference();
-#endif
+#endif /* (MAIN_APP == PPG_APP_EI_INFERENCE_ACQUIRED_DATA) */
 
-#if(MAIN_APP == PPG_APP_EI_INFERENCE_ACQUIRED_DATA)
-    PPG_EI_UtilsAppStaticInference();
-#endif
+#if (MAIN_APP == PPG_APP_EI_STREAM_DATA)
+    PPG_UtilsAppStreamingData();
+#endif /* (MAIN_APP == PPG_APP_EI_INFERENCE_ACQUIRED_DATA) */
+
     return 0;
 }
