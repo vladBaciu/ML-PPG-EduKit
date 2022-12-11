@@ -94,10 +94,10 @@ DISABLE_COMPONENTS=
 
 
 #PPG_APP_EI_INFERENCE_HARDCODED_DATA=0
-#APP_EI_INFERENCE_ACQUIRED_DATA=1
+#PPG_APP_EI_INFERENCE_ACQUIRED_DATA=1
 #PPG_APP_EI_STREAM_DATA=2
 
-MAIN_APP_TYPE=1
+MAIN_APP_TYPE=2
 
 ################################################################################
 # Edge Impulse Specific and PPG EduKit Platform files
@@ -217,7 +217,19 @@ PREBUILD=
 # Custom post-build commands to run.
 POSTBUILD=
 
-$(info PPG Application: $(MAIN_APP_TYPE))
+
+################################################################################
+# Print built application
+################################################################################
+ifeq ($(MAIN_APP_TYPE), 0)
+    $(info PPG Application PPG_APP_EI_INFERENCE_HARDCODED_DATA)
+endif
+ifeq ($(MAIN_APP_TYPE), 1)
+    $(info PPG Application PPG_APP_EI_INFERENCE_ACQUIRED_DATA)
+endif
+ifeq ($(MAIN_APP_TYPE), 2)
+    $(info PPG Application PPG_APP_EI_STREAM_DATA)
+endif
 
 ################################################################################
 # Paths
