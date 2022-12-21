@@ -188,7 +188,7 @@ void PPG_UtilsAppStreamingData(void)
     display_update();
     CyDelay(500UL);
 
-    PPG_UtilsDisplayStringArray(ppgInferenceText,  sizeof(ppgInferenceText)  - 1U, 1U, ((15UL << 16) | 10UL), TRUE);
+    PPG_UtilsDisplayStringArray(ppgInferenceText,  sizeof(ppgInferenceText)  - 1U, 1U, ((10UL << 16) | 10UL), TRUE);
     PPG_UtilsDisplayStringArray(ppgConnectionText, sizeof(ppgConnectionText) - 1U, 1U, ((10UL << 16) | 50UL), FALSE);
 
     for(;;)
@@ -225,7 +225,7 @@ void PPG_EI_UtilsAppLiveInference(void)
     signal.total_length = EI_CLASSIFIER_DSP_INPUT_FRAME_SIZE;
     signal.get_data = &get_signal_data;
 
-    PPG_UtilsDisplayStringArray(ppgInferenceText,  sizeof(ppgInferenceText)  - 1U, 1U, ((15UL << 16) | 10UL), TRUE);
+    PPG_UtilsDisplayStringArray(ppgInferenceText,  sizeof(ppgInferenceText)  - 1U, 1U, ((10UL << 16) | 10UL), TRUE);
     PPG_UtilsDisplayStringArray(ppgConnectionText, sizeof(ppgConnectionText) - 1U, 1U, ((10UL << 16) | 50UL), FALSE);
 
     for(;;)
